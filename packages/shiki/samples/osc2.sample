@@ -1,0 +1,30 @@
+# ---- SCENARIO DEFINITION USING SPECIALIZED ACTIONS ----
+# Please note that this scenario was created using the specialized actions based on its generic action counterpart that can be found in the same folder.
+# The intent of this scenario definition is to provide a concrete and complete scenario.
+scenario elk_init_location:​
+# initialize route and rough location for completeness of overall scenario
+    ego, gvt: vehicle
+    r: route​
+    keep(r.min_lanes == 2)
+    do parallel:
+    ego.drive() with:
+        speed(223kph)
+        ego.assign_pose(road_pose(r.lane1, s=150m, t=0m)) #road_pose not fixed yet #150m as best guess actually depends on power of vehicles etc.
+        gvt.assign_pose(road_pose(r.lane2, s=0m, t=0m)) 
+import "extend"
+
+scenario elk_prepare_overtake:
+# initialize speeds and distance between vehicles to create starting situation for overtake
+    ego, gvt: vehicle
+    ego_lane_offset, gvt_lane_offset, overtake_distance, ego_v_lat, ego_speed, gvt_speed, ego_rear_overhang: float
+    keep (ego_speed == 72kph)
+    keep (gvt_speed == 80kph)
+    keep (ego_rear_overhang == 1m)
+    # trying to make calculation from above explicit
+    keep (overtake_distance == ( (gvt_speed - ego_speed) * (ego_lane_offset - gvt_lane_offset) / ego_v_lat) - ego_rear_overhang ) 
+    # overhang should be calculated or taken vehicle parameter (overhang / bb_center_to_rear / _front still needs to be added to entity definition!)
+10.11m
+123m
+123
+
+# From https://github.com/engelben/openscenario2-vscode/blob/master/samples/04_elk_overtaking_specialized_actions.osc2

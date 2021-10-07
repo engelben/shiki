@@ -73,6 +73,7 @@ export type Lang =
   | 'objective-c' | 'objc'
   | 'objective-cpp'
   | 'ocaml'
+  | 'openscenario-2'
   | 'pascal'
   | 'perl'
   | 'php'
@@ -555,6 +556,11 @@ export const languages: ILanguageRegistration[] = [
     id: 'ocaml',
     scopeName: 'source.ocaml',
     path: 'ocaml.tmLanguage.json'
+  },
+  {
+    id: 'openscenario-2',
+    scopeName: 'source.osc2',
+    path: 'openscenario-2.tmLanguage.json'
   },
   {
     id: 'pascal',

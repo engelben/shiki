@@ -55,6 +55,7 @@ export const vscodeGrammarsToRename = {
  * provide an array like `['asm', '<url>']` to name the language `asm`
  */
 export const githubGrammarSources: (string | [string, string])[] = [
+  'https://github.com/engelben/openscenario2-vscode/blob/master/syntaxes/osc2.tmLanguage.json',
   'https://github.com/prisma-labs/vscode-graphql/blob/master/grammars/graphql.json',
   ['haml', 'https://github.com/karuna/haml-vscode/blob/master/syntaxes/haml.json'],
   'https://github.com/James-Yu/LaTeX-Workshop/blob/master/syntax/TeX.tmLanguage.json',
